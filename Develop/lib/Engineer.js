@@ -1,4 +1,4 @@
-//inherit Employee class
+//inherits Employee class
 const Employee = require("./Employee")
 
 class Engineer extends Employee {
@@ -15,5 +15,5 @@ class Engineer extends Employee {
     }
 }
 
-//exports subClass created
+//exports new Engineer subClass 
 module.exports = Engineer 
