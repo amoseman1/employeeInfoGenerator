@@ -1,20 +1,23 @@
-// TODO: Write code to define and export the Employee class
+//define the Employee class - super
 class Employee {
-    constructor(name,id, email) {
+    constructor(name, id, email) {
         this.name = name
         this.id = id;
         this.email = email;
     }
-    //method for console logging user input???
     getName() {
-
+        return this.name
     }
     getId() {
-
+        return this.id
     }
     getEmail() {
-
+        return this.email
+    }
+    getRole() {
+        return "Employee"
     }
 }
 
+//export the employee class
 module.exports = Employee

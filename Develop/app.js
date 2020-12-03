@@ -6,11 +6,53 @@ const path = require("path");
 const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+const outputPath = path.join(OUTPUT_DIR, "team.html"); // our writefile file, name of the file, data is the render method with employee array passed into it
 
 const render = require("./lib/htmlRenderer");
+const { listenerCount } = require("process");
+const employeeArr = []
 
-inquirer.prompt([
+ function createManager() {
+    inquirer.prompt ([
+
+    ]) .then((answers) => {  ///make sure order is correct
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+        employeeArr.push(manager);
+        addTeamMember();
+    })
+
+}
+function createIntern() {
+    inquirer.prompt ([
+
+    ])
+
+}
+function createEngineer() {
+    inquirer.prompt ([
+        
+    ])
+
+}
+function addTeamMember() {
+    inquirer.prompt ([
+        {
+            type: "list",
+            name: "employeeRole",
+            message: "What type of employee would you like to add?",
+            choices: ["Intern", "Engineer", "None"]
+
+        }
+
+    ]) . then((answers) => {
+        if (answers.employeeRole === "Intern") {
+            createIntern()
+        } //none --> build team function
+    })
+   }
+
+
+   inquirer.prompt([
     {
         type: "input",
         name: "name",
@@ -45,7 +87,7 @@ inquirer.prompt([
     },
     {
         type: "input",
-        name: "office",
+        name: "officeNumber",
         message: "What is your office number?"
     },
     
@@ -62,6 +104,9 @@ inquirer.prompt([
         }
     });
 
+    function buildTeam() {
+        //call render and passs in info with writefile
+    }
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)

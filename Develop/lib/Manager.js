@@ -2,14 +2,18 @@
 const Employee = require("./Employee")
 
 class Manager extends Employee {
-    const managerClass = constructor() {      // this is new to creating a manager class   ???????
-    //variables new to intern
+    constructor(name, id, email, officeNumber) {
+        super(name, id, email);    // this is new to creating a manager class   ???????
+        //variables new to manager
+        this.officeNumber = officeNumber
 
-    //super, inheritance params from employee class
-    
+    }
+    getOfficeNumber() {
+        return this.officeNumber
+    }
+    getRole() {
+        return "Manager"
+    }
 }
-}
 
-const manager = new Manager(//parameters)
-
-    module.exports = //variable of new function ?????? managerClass
+module.exports = Manager//variable of new function ?????? managerClass
