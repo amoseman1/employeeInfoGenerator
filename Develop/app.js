@@ -5,11 +5,10 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
-const OUTPUT_DIR = path.resolve(__dirname, "output");                       //outputPath
-const outputPath = path.join(OUTPUT_DIR, "team.html"); // our writefile file, name of the file, data is the render method with employee array passed into it
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html"); // the writefile file
 
 const render = require("./lib/htmlRenderer");
-const { listenerCount } = require("process");
 
 //created empty array for employees to get pushed to
 const employeeArr = []
@@ -47,6 +46,8 @@ function createManager() {
     })
 
 };
+
+createManager();
 
 function createIntern() {
     inquirer.prompt([
@@ -121,7 +122,7 @@ function addTeamMember() {
             type: "list",
             name: "employeeRole",
             message: "What type of employee would you like to add?",
-            choices: ["Intern", "Engineer", "Manager", "None"]
+            choices: ["Intern", "Engineer", "None"]
 
         }
 
@@ -130,18 +131,17 @@ function addTeamMember() {
             createIntern();
         } else if (answers.employeeRole === "Engineer") {
             createEngineer();
-        } else if (answers.employeeRole === "Manager") {
-            createManager();   ///is this necessary?
         } else { buildTeam() };
     })
 };
 
 function buildTeam() {
-    //const outputPath = path.join(OUTPUT_DIR, "team.html"); // our writefile file, name of the file, data is the render method with employee array passed into it
-    //call render and passs in info with writefile
-    //filepath stored in a var  //data being put in file
-    fs.writeFile(outputPath, render(employeeArr), (err) => {
-        if (err) throw err;
+    const teamBuilt = render(employeeArr);
+    fs.writeFile(outputPath, teamBuilt, (err) => {
+        if (err) {
+            console.error(err)
+            return
+        }
     })
 }
 
