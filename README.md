@@ -29,7 +29,7 @@ Amy Moseman
 
 To run the tests enter - 'npm test' in nodeJs
 This is what the passed tests should look like:
-<img src="Assets/tests.png>
+<img src="Assets/tests.png">
 
 ## Questions
 
