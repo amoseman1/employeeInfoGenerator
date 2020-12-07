@@ -1,0 +1,10 @@
+#header {
+  background-color: rgb(129, 50, 50) !important;
+  font-size: 25 px;
+}
+
+body h2 {
+  font-size: 20 px;
+  color: rgb(243, 237, 237);
+  background-color: red !important;
+}
